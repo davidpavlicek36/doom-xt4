@@ -57,14 +57,6 @@ Requires [PlatformIO](https://platformio.org). The device must be in bootloader 
 pio run --target upload
 ```
 
-### Still frame (for photos / thumbnail)
-
-Renders a single frozen scene and holds it on the display indefinitely. Useful for taking clean shots.
-
-```bash
-pio run -e still --target upload
-```
-
 ---
 
 ## Project structure
@@ -72,7 +64,6 @@ pio run -e still --target upload
 ```
 src/
   main.cpp          — Arduino entry point, input polling, e-ink render loop
-  still.cpp         — Standalone still-frame firmware (still env only)
   game/
     game.hpp        — Game loop, state machine, screen routing
     Player.hpp      — Player movement and state
@@ -99,3 +90,5 @@ All raycasting code (DDA wall projection, Z-buffer, sprite projection) is derive
 
 ### [Freedoom](https://freedoom.github.io)
 The zombie soldier sprite (`poss[a-d]5`) and pistol sprite (`pisga0`) are from the Freedoom free-content DOOM replacement, resized to 32×32 and converted to 1-bit C arrays. Released under an open license that permits redistribution.
+
+> **⚠️ Disclaimer:** This project involves flashing custom firmware onto hardware. Proceed at your own risk. I take no responsibility for any damage to your device, data loss, or any other consequences resulting from building or flashing this firmware. Make sure you know what you are doing before attempting to use this.
