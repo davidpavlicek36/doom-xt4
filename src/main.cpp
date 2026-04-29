@@ -55,6 +55,8 @@ void setup() {
 
     // Start input polling task at priority 2 (loop() runs at 1)
     xTaskCreate(inputTaskFn, "input", 2048, nullptr, 2, nullptr);
+    delay(200); // let GPIO settle after boot — discards phantom power-button press
+    pendingPower = false;
 }
 
 void loop() {
