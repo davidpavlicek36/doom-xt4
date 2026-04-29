@@ -1,8 +1,10 @@
 # doom-xt4
 
-A DOOM-inspired raycaster running on the [XTeink X4](https://github.com/open-x4-epaper/community-sdk) — an ESP32-C3 device with an 800×480 e-ink display.
+A DOOM-inspired raycaster running on the [XTeink X4](https://amzn.to/3QGpF3R) — an ESP32-C3 device with an 800×480 e-ink display.
 
 Not a real DOOM port. A Wolfenstein-style raycaster engine built from scratch using DOOM's open-source sprites, designed specifically around the constraints of e-ink: 1-bit rendering, slow refresh, and no backlight.
+
+> Vibecoded with [Claude](https://claude.ai).
 
 ![doom-xt4 running on the XTeink X4](photos/photo.jpeg)
 
