@@ -1,5 +1,8 @@
 # doom-xt4
 
+> **⚠️ Disclaimer:** This project involves flashing custom firmware onto hardware. Proceed at your own risk. I take no responsibility for any damage to your device, data loss, or any other consequences resulting from building or flashing this firmware. Make sure you know what you are doing before attempting to use this.
+
+
 A DOOM-inspired raycaster running on the [XTeink X4](https://amzn.to/3QGpF3R) — an ESP32-C3 device with an 800×480 e-ink display.
 
 Not a real DOOM port. A Wolfenstein-style raycaster engine built from scratch using DOOM's open-source sprites, designed specifically around the constraints of e-ink: 1-bit rendering, slow refresh, and no backlight.
@@ -90,5 +93,3 @@ All raycasting code (DDA wall projection, Z-buffer, sprite projection) is derive
 
 ### [Freedoom](https://freedoom.github.io)
 The zombie soldier sprite (`poss[a-d]5`) and pistol sprite (`pisga0`) are from the Freedoom free-content DOOM replacement, resized to 32×32 and converted to 1-bit C arrays. Released under an open license that permits redistribution.
-
-> **⚠️ Disclaimer:** This project involves flashing custom firmware onto hardware. Proceed at your own risk. I take no responsibility for any damage to your device, data loss, or any other consequences resulting from building or flashing this firmware. Make sure you know what you are doing before attempting to use this.
