@@ -81,8 +81,9 @@ namespace Game {
     void setup() { resetGame(); }
 
     // Returns true (once) when a state transition needs a full e-ink refresh
-    bool consumeFullRefresh() { bool v = _wantsFullRefresh; _wantsFullRefresh = false; return v; }
-    bool isPlaying()          { return gameState == GameState::PLAYING; }
+    bool consumeFullRefresh()  { bool v = _wantsFullRefresh; _wantsFullRefresh = false; return v; }
+    void requestFullRefresh()  { _wantsFullRefresh = true; }
+    bool isPlaying()           { return gameState == GameState::PLAYING; }
 
     // Draws the title/logo into Screen::buffer to be shown on power-off
     void prepareOffScreen() {

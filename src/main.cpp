@@ -20,13 +20,16 @@ InputManager inputMgr;
 static volatile int  pendingTurns = 0;
 static volatile bool pendingShoot = false;
 static volatile bool pendingPower = false;
+static volatile bool pendingPause = false;
 static volatile bool pendingAny   = false;
+
+static bool isPaused = false;
 
 static void pollInput() {
     inputMgr.update();
     if (inputMgr.wasPressed(InputManager::BTN_UP))      { pendingTurns--; pendingAny = true; }
     if (inputMgr.wasPressed(InputManager::BTN_DOWN))    { pendingTurns++; pendingAny = true; }
-    if (inputMgr.wasPressed(InputManager::BTN_LEFT))    { pendingTurns++; pendingAny = true; }
+    if (inputMgr.wasPressed(InputManager::BTN_LEFT))    { pendingPause = true; }
     if (inputMgr.wasPressed(InputManager::BTN_RIGHT) ||
         inputMgr.wasPressed(InputManager::BTN_CONFIRM)) { pendingShoot = true; pendingAny = true; }
     if (inputMgr.wasPressed(InputManager::BTN_POWER))   pendingPower = true;
@@ -62,6 +65,22 @@ void loop() {
     float dt = (float)(now - lastTime) / 1000000.0f;
     if (dt > 1.0f) dt = 1.0f;
     lastTime = now;
+
+    if (pendingPause) {
+        pendingPause = false;
+        isPaused = !isPaused;
+        Game::requestFullRefresh();
+        if (isPaused) {
+            renderToEInk();
+        }
+    }
+
+    if (isPaused) {
+        pendingTurns = 0;
+        pendingShoot = false;
+        pendingAny   = false;
+        return;
+    }
 
     InputData input;
     input.fwd       = true;
