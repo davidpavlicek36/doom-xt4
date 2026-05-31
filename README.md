@@ -30,7 +30,6 @@ Not a real DOOM port. A Wolfenstein-style raycaster engine built from scratch us
 | MCU | ESP32-C3 |
 | Display | SSD1677 e-ink, 800×480, 1-bit mono |
 | Input | 7-button layout (D-pad + confirm + power) |
-| Usable RAM | ~87 KB app footprint (24 KB framebuffer + 48 KB e-ink buffer dominate) |
 
 ---
 
@@ -48,11 +47,15 @@ The player **auto-walks forward** at all times. Turning is per-click.
 
 ---
 
-## Building
+## Flashing
 
-Requires [PlatformIO](https://platformio.org). The device must be in bootloader mode to flash: hold **BOOT**, plug in USB, release **BOOT**.
+### Web flasher (recommended)
 
-### Game firmware
+Visit **[davidpavlicek36.github.io/doom-xt4](https://davidpavlicek36.github.io/doom-xt4)** in Chrome or Edge. No toolchain required — connect your device, click Install, and follow the on-screen instructions.
+
+### Build from source
+
+Requires [PlatformIO](https://platformio.org).
 
 ```bash
 pio run --target upload
