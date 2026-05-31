@@ -1,0 +1,44 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install PlatformIO
+        run: pip install platformio
+
+      - name: Build firmware
+        run: pio run -e gh_release
+
+      - name: Stage release binaries
+        run: |
+          cp .pio/build/gh_release/bootloader.bin  bootloader.bin
+          cp .pio/build/gh_release/partitions.bin  partitions.bin
+          cp .pio/build/gh_release/firmware.bin    doom-xt4.bin
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            bootloader.bin
+            partitions.bin
+            doom-xt4.bin
