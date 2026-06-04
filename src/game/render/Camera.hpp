@@ -28,9 +28,7 @@ public:
 
     void draw(int health, int ammo) {
         drawWalls();
-        drawSprites();
         drawGun();
-        drawHUD(health, ammo);
     }
 
 private:

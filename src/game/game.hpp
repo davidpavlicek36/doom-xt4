@@ -122,48 +122,9 @@ namespace Game {
 
         // --- PLAYING ---
         Screen::clear(240);
-        player.update(input, delta);
 
-        for (int i = 0; i < NUM_ENEMIES; i++) {
-            enemies[i].update(player.pos, delta);
-            if (enemies[i].alive) {
-                float dx = enemies[i].pos.x - player.pos.x;
-                float dy = enemies[i].pos.y - player.pos.y;
-                if (dx*dx + dy*dy < 0.4f) {
-                    player.health -= (int)(delta * 20);
-                    if (player.health < 0) player.health = 0;
-                }
-            }
-        }
-
-        if (input.shoot && player.ammo > 0) {
-            player.ammo--;
+        if (input.shoot)
             camera.triggerGunFlash();
-            for (int i = 0; i < NUM_ENEMIES; i++) {
-                Enemy& e = enemies[i];
-                if (!e.alive) continue;
-                float dx = e.pos.x - player.pos.x;
-                float dy = e.pos.y - player.pos.y;
-                float t  = dx * player.dir.x + dy * player.dir.y;
-                if (t <= 0) continue;
-                float px   = dx - t * player.dir.x;
-                float py   = dy - t * player.dir.y;
-                float perp = sqrtf(px*px + py*py);
-                if (perp < 0.45f && t < camera.Zbuffer[Screen::SCREEN_WIDTH / 2]) {
-                    e.alive = false;
-                    bool allDead = true;
-                    for (int j = 0; j < NUM_ENEMIES; j++) if (enemies[j].alive) { allDead = false; break; }
-                    if (allDead) { gameState = GameState::WIN; winTimer = millis(); _wantsFullRefresh = true; }
-                }
-            }
-        }
-
-        if (player.health <= 0) {
-            gameState = GameState::DEAD;
-            deadTimer = millis();
-            _wantsFullRefresh = true;
-            return;
-        }
 
         camera.update(player);
         camera.draw(player.health, player.ammo);
