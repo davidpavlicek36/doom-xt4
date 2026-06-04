@@ -28,9 +28,7 @@ public:
 
     void draw(int health, int ammo) {
         drawWalls();
-        drawSprites();
         drawGun();
-        drawHUD(health, ammo);
     }
 
 private:
@@ -150,8 +148,8 @@ void Camera::drawGun() {
         int sy = dy * 32 / GH;
         for (int dx = 0; dx < GW; dx++) {
             int sx = dx * 32 / GW;
-            if (!sprBit(bmp_pist_mask, 0, sx, sy)) continue;
-            uint8_t color = sprBit(bmp_pist_bits, 0, sx, sy) ? 10 : 240;
+            if (!sprBit(bmp_bfgg_mask, 0, sx, sy)) continue;
+            uint8_t color = sprBit(bmp_bfgg_bits, 0, sx, sy) ? 10 : 240;
             Screen::drawPixel(originX + dx, originY + dy, color);
         }
     }

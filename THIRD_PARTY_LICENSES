@@ -2,9 +2,9 @@
 Freedoom
 --------------------------------------------------------------------------------
 
-The zombie soldier sprites (poss[a-d]5) and pistol sprite (pisga0) used in
-this project are from the Freedoom project (https://freedoom.github.io),
-resized to 32x32 and converted to 1-bit C arrays.
+The zombie soldier sprites (poss[a-d]5), pistol sprite (pisga0), and BFG9000
+sprite (bfgga0) used in this project are from the Freedoom project
+(https://freedoom.github.io), resized to 32x32 and converted to 1-bit C arrays.
 
 Copyright © 2001-2024 Contributors to the Freedoom project. All rights reserved.
 
