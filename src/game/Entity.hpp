@@ -22,10 +22,7 @@ struct Enemy {
     }
 };
 
-constexpr int NUM_ENEMIES = 4;
+constexpr int NUM_ENEMIES = 1;
 static Enemy enemies[NUM_ENEMIES] = {
-    {3.0f,  3.0f},
-    {12.0f, 3.0f},
-    {3.0f,  12.0f},
-    {12.0f, 12.0f},
+    {11.0f, 8.0f},
 };
