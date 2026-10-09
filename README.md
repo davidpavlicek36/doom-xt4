@@ -3,7 +3,7 @@
 > **⚠️ Disclaimer:** This project involves flashing custom firmware onto your Xteink X4. Proceed at your own risk. I take no responsibility for any damage to your device, data loss, or any other consequences resulting from building or flashing this firmware. Make sure you know what you are doing before attempting to use this.
 
 
-A DOOM-inspired raycaster running on the [XTeink X4](https://amzn.to/3QGpF3R) — an ESP32-C3 device with an 800×480 e-ink display.
+A DOOM-inspired raycaster running on the XTeink X4 — an ESP32-C3 device with an 800×480 e-ink display.
 
 Not a real DOOM port. A Wolfenstein-style raycaster engine built from scratch using DOOM's open-source sprites, designed specifically around the constraints of e-ink: 1-bit rendering, slow refresh, and no backlight.
 
